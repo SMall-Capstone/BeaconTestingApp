@@ -357,7 +357,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
 
     public void saveExcel(){
-        // Log.i("yunjae_excel", "rssi = " + rssi);
 
         Workbook workbook = new HSSFWorkbook();
 
@@ -378,91 +377,16 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             cell.setCellValue(excelRssiArray.get(i).getBeaconID());
             cell = row.createCell(1);
             cell.setCellValue(excelRssiArray.get(i).getRssi());
-            Log.i("yunjae_excel", "for문 안");
         }
 
-        //
-        //   File xlsFile = new File("file:///mnt/sdcard/excelRssi/test.xlsx");
-        //   Log.i("yunjae_excel", "파일생성 : " + xlsFile.getName() + " 경로 : " + xlsFile.getPath());
-
-        File xlsFile = new File("excelRssi/Rssi.xls");
-        try{
-            Log.i("yunjae_excel", "try");
-            FileOutputStream os = new FileOutputStream(xlsFile);
-            workbook.write(os); // 외부 저장소에 엑셀 파일 생성
-            Log.i("yunjae_excel", "파일생성///");
-            //  os = openFileOutput("test.xlsx", Context.MODE_APPEND);
-            //openFileOutput("myfile.xlsx", Context.MODE_APPEND);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-
-
-
-/*
-    public void saveExcel(*/
-/*String beaconId, int rssi*//*
-){
-        // Log.i("yunjae_excel", "rssi = " + rssi);
-
-        Workbook workbook = new HSSFWorkbook();
-
-        Sheet sheet = workbook.createSheet(); // 새로운 시트 생성
-
-        Row row = sheet.createRow(0); // 새로운 행 생성
-        Cell cell;
-
-        cell = row.createCell(0); // 1번 셀 생성
-        cell.setCellValue("이름"); // 1번 셀 값 입력
-
-        cell = row.createCell(1); // 2번 셀 생성
-        cell.setCellValue("RSSI"); // 2번 셀 값 입력
-
-        Log.i("yunjae_excel", "for문 위");
-
-        for(int i=1;i<excelRssiArray.size();i++) {
-            row = sheet.createRow(i);
-            cell = row.createCell(0);
-            cell.setCellValue(beaconId);
-            cell = row.createCell(1);
-            cell.setCellValue(rssi);
-            Log.i("yunjae_excel", "for문 안");
-        }
-
-        //
-        //   File xlsFile = new File("file:///mnt/sdcard/excelRssi/test.xlsx");
-        //   Log.i("yunjae_excel", "파일생성 : " + xlsFile.getName() + " 경로 : " + xlsFile.getPath());
-
-        File xlsFile = new File("sdcard/excelRssi/test.xls");
+        File xlsFile = new File("sdcard/excelRssi/RssiData.xls");
         try{
             FileOutputStream os = new FileOutputStream(xlsFile);
             workbook.write(os); // 외부 저장소에 엑셀 파일 생성
-            Log.i("yunjae_excel", "파일생성///");
-            //  os = openFileOutput("test.xlsx", Context.MODE_APPEND);
-            //openFileOutput("myfile.xlsx", Context.MODE_APPEND);
+            Log.i("yunjae_excel", "엑셀 파일생성");
         }catch (IOException e){
             e.printStackTrace();
         }
-
-*/
-
-
-
-        //Toast.makeText(getApplicationContext(),xlsFile.getAbsolutePath()+"에 저장되었습니다",Toast.LENGTH_SHORT).show();
-
-      /*  try {
-            FileOutputStream fos = openFileOutput
-                    ("myfile.txt"
-                            , // 파일명 지정
-                            Context.MODE_APPEND); // 저장모드
-            PrintWriter out = new PrintWriter(fos);
-            out.println(data);
-            out.close();
-            result.setText("file saved");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
 
