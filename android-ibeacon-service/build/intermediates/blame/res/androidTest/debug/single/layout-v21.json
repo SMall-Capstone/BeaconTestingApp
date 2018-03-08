@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\AndroidWorkspace(hyeo)\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\1932558b8caf69eef0110c180e4c7ba4\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\AndroidWorkspace(hyeo)\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\1932558b8caf69eef0110c180e4c7ba4\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\AndroidWorkspace(hyeo)\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\1932558b8caf69eef0110c180e4c7ba4\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\AndroidWorkspace(hyeo)\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\1932558b8caf69eef0110c180e4c7ba4\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]
