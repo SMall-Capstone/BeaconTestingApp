@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -358,12 +359,34 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         //or switch문을 이용하면 될듯 하다.
+        LinearLayout layout = findViewById(R.id.visibleLayout);
+
+        LinearLayout locationLayout = findViewById(R.id.visibleLayout);
+
+        int result = layout.getVisibility();
+        int locationresult = layout.getVisibility();
 
         if (id == R.id.saveExcel) {
             saveExcel();
             return true;
         }
 
+        else if(id == R.id.visibleBtn) {
+            if (result == View.VISIBLE) {
+                layout.setVisibility(View.GONE); // 화면에서 제외
+            } else {
+                layout.setVisibility(View.VISIBLE); // 화면에서 보이기
+            }
+        }
+
+        else if(id == R.id.locationBtn) {
+            if(locationresult == View.VISIBLE) {
+                locationLayout.setVisibility(View.GONE);
+            } else {
+                locationLayout.setVisibility(View.VISIBLE);
+            }
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -395,6 +418,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         File xlsFile = new File("sdcard/excelRssi/RssiData.xls");
+        // File xlsFile = new File(getExternalFilesDir(null),"test2.xls");
         try{
             FileOutputStream os = new FileOutputStream(xlsFile);
             workbook.write(os); // 외부 저장소에 엑셀 파일 생성
