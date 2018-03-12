@@ -1,5 +1,7 @@
 package org.androidtown.beacontest2;
 
+import android.util.Log;
+
 /**
  * Created by 이예지 on 2018-03-07.
  */
@@ -10,6 +12,7 @@ public class BeaconInfo {
     private boolean isFirst;
     private double maxRSSI,minRSSI;
     private int location_x,location_y;
+    private double distance;
 
     public BeaconInfo(){
 
@@ -94,5 +97,19 @@ public class BeaconInfo {
 
     public void setLocation_y(int location_y) {
         this.location_y = location_y;
+    }
+
+    public void setLocation(int x,int y){
+        this.setLocation_x(x);
+        this.setLocation_y(y);
+        Log.i("Location",this.getMinor()+" location setting");
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

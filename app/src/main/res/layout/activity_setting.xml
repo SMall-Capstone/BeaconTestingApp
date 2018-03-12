@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_12802_y"
@@ -35,7 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_12928_y"
@@ -64,7 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
     </LinearLayout>
 
@@ -86,7 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_13298_y"
@@ -94,7 +104,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_14863_y"
@@ -123,7 +137,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -144,7 +160,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_14990_y"
@@ -152,7 +170,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
@@ -173,7 +193,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
 
         <EditText
             android:id="@+id/editText_14997_y"
@@ -181,7 +203,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <Button

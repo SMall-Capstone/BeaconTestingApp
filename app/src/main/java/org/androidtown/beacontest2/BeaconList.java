@@ -1,6 +1,10 @@
 package org.androidtown.beacontest2;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -26,5 +30,37 @@ public class BeaconList {
 
     public static BeaconList getInstance(){
         return beaconList;
+    }
+
+    public ArrayList<BeaconInfo> findNearestBeacons(){
+        ArrayList<BeaconInfo> beaconInfos = new ArrayList<BeaconInfo>();
+
+        for(int i=0;i<beaconInfoArrayList.size();i++){
+            beaconInfos.add(beaconInfoArrayList.get(i));
+        }
+
+        if(beaconInfos.size()==6/*==beaconInfoArrayList.size()*/){
+            Collections.sort(beaconInfos, new Comparator<BeaconInfo>() {
+
+                @Override
+                public int compare(BeaconInfo beaconInfo1, BeaconInfo beaconInfo2) {
+                    if(beaconInfo1.getFilteredRSSIvalue()>beaconInfo2.getFilteredRSSIvalue()){
+                        return 1;
+                    }
+                    else if(beaconInfo1.getFilteredRSSIvalue()<beaconInfo2.getFilteredRSSIvalue()){
+                        return -1;
+                    }
+                    else
+                        return 0;
+                }
+            });
+
+            return beaconInfos;
+        }
+        else {
+            Log.i("Sort","beaconInfos setting fail");
+            return beaconInfos;
+        }
+
     }
 }

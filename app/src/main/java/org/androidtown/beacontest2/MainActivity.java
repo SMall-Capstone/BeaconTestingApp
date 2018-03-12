@@ -137,6 +137,18 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),SettingActivity.class);
                 startActivity(intent);
+
+                /*//Test
+                ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
+
+                if(beaconInfos==null){
+                    Toast.makeText(getApplicationContext(),"null",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    for(int i=0;i<beaconInfos.size();i++){
+                        Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
+                    }
+                }*/
             }
         });
 

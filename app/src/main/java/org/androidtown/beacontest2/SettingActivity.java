@@ -29,8 +29,30 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void updateLocation(){
-        //String s = ((EditText)findViewById(R.id.editText_13298_x)).getText().toString();
+        int x,y;
 
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_12802_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_12802_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon12802").setLocation(x,y);
 
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_12928_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_12928_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon12928").setLocation(x,y);
+
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_13298_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_13298_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon13298").setLocation(x,y);
+
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_14863_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_14863_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon_14863").setLocation(x,y);
+
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_14990_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_14990_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon_14990").setLocation(x,y);
+
+        x = Integer.parseInt(((EditText)findViewById(R.id.editText_14997_x)).getText().toString());
+        y = Integer.parseInt(((EditText)findViewById(R.id.editText_14997_y)).getText().toString());
+        beaconList.findBeacon("MiniBeacon_14997").setLocation(x,y);
     }
 }
