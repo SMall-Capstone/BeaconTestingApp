@@ -243,7 +243,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
                         }
 
-                        calculateDistance(beaconInfos.get(0),beaconInfos.get(1),beaconInfos.get(3));
+                        if(beaconInfos.size() >= 3)
+                            calculateDistance(beaconInfos.get(0),beaconInfos.get(1),beaconInfos.get(3));
 
                         //Chart 그래프 보는 버튼
                         //chart 로 데이터 전달
@@ -353,8 +354,49 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         public void calculateDistance(BeaconInfo b1,BeaconInfo b2, BeaconInfo b3){
+            int X1 = b1.getLocation_x();
+            int Y1 = b1.getLocation_y();
+            int X2 = b2.getLocation_x();
+            int Y2 = b2.getLocation_y();
+            double D1 = b1.getDistance();
+            double D2 = b2.getDistance();
 
 
+            Log.i("Check//",b1.getName()+"/"+b2.getName()+"/"+b3.getName());
+            Log.i("Check//",X1+"/"+Y1+"/"+X2+"/"+Y2+"/"+D1+"/"+D2);
+
+            double T = Math.log( Math.pow((X2 - X1),2) + Math.pow((Y2 - Y1),2));
+            double TrianglePlusX = X1 + D1 * Math.cos( Math.atan( (Y2 - Y1) / (X2 - X1) ) +
+                    Math.acos( (Math.pow(D1,2) - Math.pow(D2,2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
+            double TriangleMinusX = X1 + D1 * Math.cos( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
+                    Math.acos( (Math.pow(D1,2) - Math.pow(D2,2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
+            double TrianglePlusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) +
+                    Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
+            double TriangleMinusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
+                    Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
+
+
+            double resultX,resultY;
+
+
+            double d1 = pointTopointDistance(TrianglePlusX,TrianglePlusY,b3.getLocation_x(),b3.getLocation_y());
+            double d2 = pointTopointDistance(TriangleMinusX,TriangleMinusY,b3.getLocation_x(),b3.getLocation_y());
+            if(d1 < d2){
+                resultX = TrianglePlusX;
+                resultY = TrianglePlusY;
+            }
+            else {
+                resultX = TriangleMinusX;
+                resultY = TriangleMinusY;
+            }
+
+            TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
+            location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+
+        }
+
+        public double pointTopointDistance(double x1,double y1,double x2,double y2){
+            return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
         }
 
 

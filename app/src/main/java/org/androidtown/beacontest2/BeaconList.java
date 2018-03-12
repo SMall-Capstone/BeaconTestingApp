@@ -19,11 +19,18 @@ public class BeaconList {
 
     private BeaconList() {
         beaconInfoHashMap.put("MiniBeacon12802",new BeaconInfo("MiniBeacon12802","40001","12802"));
+        beaconInfoHashMap.get("MiniBeacon12802").setLocation(0,0);
+
         beaconInfoHashMap.put("MiniBeacon12928",new BeaconInfo("MiniBeacon12928","40001","12928"));
+        beaconInfoHashMap.get("MiniBeacon12928").setLocation(5,0);
+
         beaconInfoHashMap.put("MiniBeacon13298",new BeaconInfo("MiniBeacon13298","40001","13298"));
+        beaconInfoHashMap.get("MiniBeacon13298").setLocation(4,3);
+
         beaconInfoHashMap.put("MiniBeacon_14863",new BeaconInfo("MiniBeacon_14863","40001","14863"));
         beaconInfoHashMap.put("MiniBeacon_14990",new BeaconInfo("MiniBeacon_14990","40001","14990"));
         beaconInfoHashMap.put("MiniBeacon_14997",new BeaconInfo("MiniBeacon_14997","40001","14997"));
+
 
         beaconId.add("MiniBeacon12802");
         beaconId.add("MiniBeacon12928");
