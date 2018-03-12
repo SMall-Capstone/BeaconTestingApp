@@ -47,7 +47,6 @@ public class BeaconList {
 
         for(int i=0;i<beaconInfoHashMap.size();i++){
             beaconInfos.add(beaconInfoHashMap.get(beaconId.get(i)));
-            Log.i("kkkkkkkk",beaconInfoHashMap.get(beaconId.get(i)) + "");
         }
 
         if(beaconInfos.size()==6/*==beaconInfoArrayList.size()*/){

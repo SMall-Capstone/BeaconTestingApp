@@ -23,9 +23,10 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         this.major = major;
         this.minor = minor;
         this.isFirst = true;
-        this.filteredRSSIvalue=-1000;
-        this.maxRSSI=-100;
-        this.minRSSI=0;
+        this.filteredRSSIvalue = -1000;
+        this.maxRSSI = -100;
+        this.minRSSI = 0;
+        this.distance = -1;
     }
 
     public String getName() {

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\BeaconTest2.iml" filepath="C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\BeaconTest2.iml" />
       <module fileurl="file://$PROJECT_DIR$/BeaconTestingApp.iml" filepath="$PROJECT_DIR$/BeaconTestingApp.iml" />
-      <module fileurl="file://C:\Users\HANEUL\StudioProjects\BeaconTestingApp\BeaconTestingApp.iml" filepath="C:\Users\HANEUL\StudioProjects\BeaconTestingApp\BeaconTestingApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-ibeacon-service/android-ibeacon-service.iml" filepath="$PROJECT_DIR$/android-ibeacon-service/android-ibeacon-service.iml" />
-      <module fileurl="file://C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\android-ibeacon-service\android-ibeacon-service.iml" filepath="C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\android-ibeacon-service\android-ibeacon-service.iml" />
-      <module fileurl="file://C:\Users\HANEUL\StudioProjects\BeaconTestingApp\android-ibeacon-service\android-ibeacon-service.iml" filepath="C:\Users\HANEUL\StudioProjects\BeaconTestingApp\android-ibeacon-service\android-ibeacon-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\app\app.iml" filepath="C:\Users\HANEUL\Android\AndroidStudioProjects\BeaconTestingApp\app\app.iml" />
-      <module fileurl="file://C:\Users\HANEUL\StudioProjects\BeaconTestingApp\app\app.iml" filepath="C:\Users\HANEUL\StudioProjects\BeaconTestingApp\app\app.iml" />
     </modules>
   </component>
 </project>

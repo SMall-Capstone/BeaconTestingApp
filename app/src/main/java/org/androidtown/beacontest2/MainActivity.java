@@ -51,8 +51,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
-
+import static java.lang.Math.pow;
 
 
 // 비콘이 쓰이는 클래스는 BeaconConsumer 인터페이스를 구현해야한다.
@@ -136,10 +135,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(getApplicationContext(),SettingActivity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(getApplicationContext(),SettingActivity.class);
+                startActivity(intent);
 
-                //Test
+                /*//Test
                 ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
 
                 if(beaconInfos==null){
@@ -149,7 +148,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                     for(int i=0;i<beaconInfos.size();i++){
                         Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
                     }
-                }
+
+                }*/
             }
         });
 
@@ -238,6 +238,13 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         textView_beaconList.append(beaconInfo.getMinor() + "평균 = " + filteredRSSI + "\n"); //아래쪽 텍스트뷰
 
 
+                        ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
+                        for(int i=0;i<beaconInfos.size();i++){
+                            Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
+                        }
+
+                        calculateDistance(beaconInfos.get(0),beaconInfos.get(1),beaconInfos.get(3));
+
                         //Chart 그래프 보는 버튼
                         //chart 로 데이터 전달
                         Button ShowChartButton = (Button) findViewById(R.id.chartButton);
@@ -315,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         public void distanceSetText(BeaconInfo beaconInfo, double filteredRSSI) {
-            double d = (double) Math.pow(10, (txPower - filteredRSSI) / (10 * 2));
+            double d = (double) pow(10, (txPower - filteredRSSI) / (10 * 2));
             double distance = Double.parseDouble(String.format("%.2f",d));
             beaconInfo.setDistance(distance);
 
@@ -344,6 +351,12 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 textView.setText(" " + distance);
             }
         }
+
+        public void calculateDistance(BeaconInfo b1,BeaconInfo b2, BeaconInfo b3){
+
+
+        }
+
 
     };
 
