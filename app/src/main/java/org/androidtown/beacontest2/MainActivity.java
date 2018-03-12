@@ -135,10 +135,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SettingActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getApplicationContext(),SettingActivity.class);
+                startActivity(intent);*/
 
-                /*//Test
+                //Test
                 ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
 
                 if(beaconInfos==null){
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                     for(int i=0;i<beaconInfos.size();i++){
                         Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
                     }
-                }*/
+                }
             }
         });
 
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(), beaconInfo.getName()));
 
 
-                        distanceSetText(beaconInfo.getMinor(), (double)filteredRSSI);//거리 계산해서 textView에 출력
+                        distanceSetText(beaconInfo, (double)filteredRSSI);//거리 계산해서 textView에 출력
 
                         textView_beaconList.append(beaconInfo.getMinor() + "평균 = " + filteredRSSI + "\n"); //아래쪽 텍스트뷰
 
@@ -313,29 +313,32 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
         }
 
-        public void distanceSetText(String minor, double filteredRSSI) {
-            double distance = (double) Math.pow(10, (txPower - filteredRSSI) / (10 * 2));
-            if (minor.equals("13298")) {
+        public void distanceSetText(BeaconInfo beaconInfo, double filteredRSSI) {
+            double d = (double) Math.pow(10, (txPower - filteredRSSI) / (10 * 2));
+            double distance = Double.parseDouble(String.format("%.2f",d));
+            beaconInfo.setDistance(distance);
+
+            if (beaconInfo.getMinor().equals("13298")) {
                 TextView textView = (TextView) findViewById(R.id.textView_distance13298);
                 textView.setText(" " + distance);
             }
-            else if(minor.equals("14990")){
+            else if(beaconInfo.getMinor().equals("14990")){
                 TextView textView = (TextView) findViewById(R.id.textView_distance14990);
                 textView.setText(" " + distance);
             }
-            else if(minor.equals("14997")){
+            else if(beaconInfo.getMinor().equals("14997")){
                 TextView textView = (TextView) findViewById(R.id.textView_distance14997);
                 textView.setText(" " + distance);
             }
-            else if(minor.equals("12802")){
+            else if(beaconInfo.getMinor().equals("12802")){
                 TextView textView = (TextView) findViewById(R.id.textView_distance12802);
                 textView.setText(" " + distance);
             }
-            else if(minor.equals("12928")){
+            else if(beaconInfo.getMinor().equals("12928")){
                 TextView textView = (TextView) findViewById(R.id.textView_distance12928);
                 textView.setText(" " + distance);
             }
-            else if(minor.equals("14863")){
+            else if(beaconInfo.getMinor().equals("14863")){
                 TextView textView = (TextView) findViewById(R.id.textView_distance14863);
                 textView.setText(" " + distance);
             }

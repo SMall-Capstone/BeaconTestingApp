@@ -6,7 +6,7 @@ import android.util.Log;
  * Created by 이예지 on 2018-03-07.
  */
 
-public class BeaconInfo {
+public class BeaconInfo implements Comparable<BeaconInfo>{
     private String name,major,minor;
     private int filteredRSSIvalue;
     private boolean isFirst;
@@ -23,6 +23,7 @@ public class BeaconInfo {
         this.major = major;
         this.minor = minor;
         this.isFirst = true;
+        this.filteredRSSIvalue=-1000;
         this.maxRSSI=-100;
         this.minRSSI=0;
     }
@@ -111,5 +112,14 @@ public class BeaconInfo {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    @Override
+    public int compareTo(BeaconInfo b) {
+        if(this.filteredRSSIvalue > b.getFilteredRSSIvalue())
+            return 1;
+        else if(this.filteredRSSIvalue < b.getFilteredRSSIvalue())
+            return -1;
+        return 0;
     }
 }

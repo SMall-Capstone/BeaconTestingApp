@@ -3,6 +3,7 @@ package org.androidtown.beacontest2;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,20 +13,29 @@ import java.util.HashMap;
  */
 
 public class BeaconList {
-    HashMap<String,BeaconInfo> beaconInfoArrayList = new HashMap<String,BeaconInfo>();
+    HashMap<String,BeaconInfo> beaconInfoHashMap = new HashMap<String,BeaconInfo>();
     private static BeaconList beaconList = new BeaconList();//싱글톤 패턴 적용
+    ArrayList<String> beaconId = new ArrayList<String>();
 
     private BeaconList() {
-        beaconInfoArrayList.put("MiniBeacon12802",new BeaconInfo("MiniBeacon12802","40001","12802"));
-        beaconInfoArrayList.put("MiniBeacon12928",new BeaconInfo("MiniBeacon12928","40001","12928"));
-        beaconInfoArrayList.put("MiniBeacon13298",new BeaconInfo("MiniBeacon13298","40001","13298"));
-        beaconInfoArrayList.put("MiniBeacon_14863",new BeaconInfo("MiniBeacon_14863","40001","14863"));
-        beaconInfoArrayList.put("MiniBeacon_14990",new BeaconInfo("MiniBeacon_14990","40001","14990"));
-        beaconInfoArrayList.put("MiniBeacon_14997",new BeaconInfo("MiniBeacon_14997","40001","14997"));
+        beaconInfoHashMap.put("MiniBeacon12802",new BeaconInfo("MiniBeacon12802","40001","12802"));
+        beaconInfoHashMap.put("MiniBeacon12928",new BeaconInfo("MiniBeacon12928","40001","12928"));
+        beaconInfoHashMap.put("MiniBeacon13298",new BeaconInfo("MiniBeacon13298","40001","13298"));
+        beaconInfoHashMap.put("MiniBeacon_14863",new BeaconInfo("MiniBeacon_14863","40001","14863"));
+        beaconInfoHashMap.put("MiniBeacon_14990",new BeaconInfo("MiniBeacon_14990","40001","14990"));
+        beaconInfoHashMap.put("MiniBeacon_14997",new BeaconInfo("MiniBeacon_14997","40001","14997"));
+
+        beaconId.add("MiniBeacon12802");
+        beaconId.add("MiniBeacon12928");
+        beaconId.add("MiniBeacon13298");
+        beaconId.add("MiniBeacon_14863");
+        beaconId.add("MiniBeacon_14990");
+        beaconId.add("MiniBeacon_14997");
+
     }
 
     public BeaconInfo findBeacon(String name){
-        return beaconInfoArrayList.get(name);
+        return beaconInfoHashMap.get(name);
     }
 
     public static BeaconList getInstance(){
@@ -35,19 +45,21 @@ public class BeaconList {
     public ArrayList<BeaconInfo> findNearestBeacons(){
         ArrayList<BeaconInfo> beaconInfos = new ArrayList<BeaconInfo>();
 
-        for(int i=0;i<beaconInfoArrayList.size();i++){
-            beaconInfos.add(beaconInfoArrayList.get(i));
+        for(int i=0;i<beaconInfoHashMap.size();i++){
+            beaconInfos.add(beaconInfoHashMap.get(beaconId.get(i)));
+            Log.i("kkkkkkkk",beaconInfoHashMap.get(beaconId.get(i)) + "");
         }
 
         if(beaconInfos.size()==6/*==beaconInfoArrayList.size()*/){
-            Collections.sort(beaconInfos, new Comparator<BeaconInfo>() {
 
+            //Collections.sort(beaconInfos);
+            Collections.sort(beaconInfos, new Comparator<BeaconInfo>() {
                 @Override
                 public int compare(BeaconInfo beaconInfo1, BeaconInfo beaconInfo2) {
-                    if(beaconInfo1.getFilteredRSSIvalue()>beaconInfo2.getFilteredRSSIvalue()){
+                    if(beaconInfo1.getFilteredRSSIvalue() < beaconInfo2.getFilteredRSSIvalue()){
                         return 1;
                     }
-                    else if(beaconInfo1.getFilteredRSSIvalue()<beaconInfo2.getFilteredRSSIvalue()){
+                    else if(beaconInfo1.getFilteredRSSIvalue() > beaconInfo2.getFilteredRSSIvalue()){
                         return -1;
                     }
                     else
