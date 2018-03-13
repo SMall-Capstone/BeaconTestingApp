@@ -411,12 +411,19 @@
     <LinearLayout
         android:id="@+id/visibleLocation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/location_Textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="좌표 찍기" />
+
+        <TextView
+            android:id="@+id/textView_nearestBeaconList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NearestBeaconList" />
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package org.androidtown.beacontest2;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,26 +17,26 @@ public class BeaconList {
     HashMap<String,BeaconInfo> beaconInfoHashMap = new HashMap<String,BeaconInfo>();
     private static BeaconList beaconList = new BeaconList();//싱글톤 패턴 적용
     ArrayList<String> beaconId = new ArrayList<String>();
-    private int txPower = -59;
+    private int txPower = -66;
 
     private BeaconList() {
         beaconInfoHashMap.put("MiniBeacon12802",new BeaconInfo("MiniBeacon12802","40001","12802"));
         beaconInfoHashMap.get("MiniBeacon12802").setLocation(0,0);
 
         beaconInfoHashMap.put("MiniBeacon12928",new BeaconInfo("MiniBeacon12928","40001","12928"));
-        beaconInfoHashMap.get("MiniBeacon12928").setLocation(0.01,5);
+        beaconInfoHashMap.get("MiniBeacon12928").setLocation(0.01,20);
 
         beaconInfoHashMap.put("MiniBeacon13298",new BeaconInfo("MiniBeacon13298","40001","13298"));
         beaconInfoHashMap.get("MiniBeacon13298").setLocation(0.02,0.01);
 
         beaconInfoHashMap.put("MiniBeacon_14863",new BeaconInfo("MiniBeacon_14863","40001","14863"));
-        beaconInfoHashMap.get("MiniBeacon_14863").setLocation(6.8,0.02);
+        beaconInfoHashMap.get("MiniBeacon_14863").setLocation(11.3,0.02);
 
         beaconInfoHashMap.put("MiniBeacon_14990",new BeaconInfo("MiniBeacon_14990","40001","14990"));
         beaconInfoHashMap.get("MiniBeacon_14990").setLocation(0.03,10);
 
         beaconInfoHashMap.put("MiniBeacon_14997",new BeaconInfo("MiniBeacon_14997","40001","14997"));
-        beaconInfoHashMap.get("MiniBeacon_14997").setLocation(7,8);
+        beaconInfoHashMap.get("MiniBeacon_14997").setLocation(12,20);
 
 
         beaconId.add("MiniBeacon12802");

@@ -234,10 +234,12 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                         textView_beaconList.append(beaconInfo.getMinor() + "평균 = " + filteredRSSI + "\n"); //아래쪽 텍스트뷰
 
-
+                        TextView textView_nearestBeaconList = (TextView)findViewById(R.id.textView_nearestBeaconList);
                         ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
+                        textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
                             Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
+                            textView_nearestBeaconList.append("\n"+beaconInfos.get(i).getName());
                         }
 
                         if(beaconInfos.size() >= 3)
@@ -409,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             }
             else {
                 //이전의 값과 차이가 5m이상 나지 않는 경우에만 좌표출력
-                if ( ! (previousX-resultX<-5 || previousX-resultX>5) ){
+                if ( ! (previousX-resultX<-3.5 || previousX-resultX>3.5) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                 }
