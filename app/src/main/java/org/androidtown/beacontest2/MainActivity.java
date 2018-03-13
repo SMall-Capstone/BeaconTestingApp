@@ -61,9 +61,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     private BeaconManager beaconManager;
 
-    TextView textView_beaconList, textView_myLocation;
-
-    double distance12, distance23, distance31;//비콘끼리의 거리
+    TextView textView_beaconList;
 
     private BluetoothManager bluetoothManager; //블루투스 매니저는 기본적으로 있어야하기때문에 여기서는 생략합니다.
     private BluetoothAdapter bluetoothAdapter; //블루투스 어댑터에서 탐색, 연결을 담당하니 여기서는 어댑터가 주된 클래스입니다.
@@ -72,19 +70,18 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     private KalmanFilter mKalmanAccRSSI;
 
-    //└============================================================================================================
     public BeaconList beaconList;
-    public final int txPower = -59;
 
     private ArrayList<RssiItem> excelRssiArray = new ArrayList<>();
 
+    private double previousX=-1,previousY=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //비콘 목록 불러오기(Singleton)
-        beaconList = BeaconList.getInstance();
+        beaconList = BeaconList.getBeaconListInstance();
 
         //SeongWon 수정
         //┌============================================================================================================
@@ -323,7 +320,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         public void distanceSetText(BeaconInfo beaconInfo, double filteredRSSI) {
-            double d = (double) pow(10, (txPower - filteredRSSI) / (10 * 2));
+            double d = (double) pow(10, (beaconList.getTxPower() - filteredRSSI) / (10 * 2));
             double distance = Double.parseDouble(String.format("%.2f",d));
             beaconInfo.setDistance(distance);
 
@@ -354,10 +351,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         public void calculateDistance(BeaconInfo b1,BeaconInfo b2, BeaconInfo b3){
-            int X1 = b1.getLocation_x();
-            int Y1 = b1.getLocation_y();
-            int X2 = b2.getLocation_x();
-            int Y2 = b2.getLocation_y();
+            double X1 = b1.getLocation_x();
+            double Y1 = b1.getLocation_y();
+            double X2 = b2.getLocation_x();
+            double Y2 = b2.getLocation_y();
             double D1 = b1.getDistance();
             double D2 = b2.getDistance();
 
@@ -375,9 +372,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             double TriangleMinusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
                     Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
 
-
             double resultX,resultY;
-
 
             double d1 = pointTopointDistance(TrianglePlusX,TrianglePlusY,b3.getLocation_x(),b3.getLocation_y());
             double d2 = pointTopointDistance(TriangleMinusX,TriangleMinusY,b3.getLocation_x(),b3.getLocation_y());
@@ -390,8 +385,36 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 resultY = TriangleMinusY;
             }
 
-            TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
-            location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+            Map m = Map.getMapInstance();
+            if(resultX < 0 || resultX > m.getMaxWidth()) {
+                if(resultX<0)
+                    resultX = 0;
+                if(resultX>m.getMaxWidth())
+                    resultX = m.getMaxWidth();
+            }
+            if(resultY < 0 || resultX > m.getMaxHeight()) {
+                if(resultY<0)
+                    resultY = 0;
+                if(resultY>m.getMaxHeight())
+                    resultY = m.getMaxHeight();
+            }
+
+            if(previousX==-1 && previousY==-1) {
+                //이전에 저장된 값이 없는 경우=>처음 측정된 값
+                previousX=resultX;
+                previousY=resultY;
+
+                TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
+                location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+            }
+            else {
+                //이전의 값과 차이가 5m이상 나지 않는 경우에만 좌표출력
+                if ( ! (previousX-resultX<-5 || previousX-resultX>5) ){
+                    TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
+                    location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+                }
+            }
+
 
         }
 

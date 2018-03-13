@@ -11,7 +11,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
     private int filteredRSSIvalue;
     private boolean isFirst;
     private double maxRSSI,minRSSI;
-    private int location_x,location_y;
+    private double location_x,location_y;
     private double distance;
 
     public BeaconInfo(){
@@ -85,23 +85,23 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         this.minRSSI = minRSSI;
     }
 
-    public int getLocation_x() {
+    public double getLocation_x() {
         return location_x;
     }
 
-    public void setLocation_x(int location_x) {
+    public void setLocation_x(double location_x) {
         this.location_x = location_x;
     }
 
-    public int getLocation_y() {
+    public double getLocation_y() {
         return location_y;
     }
 
-    public void setLocation_y(int location_y) {
+    public void setLocation_y(double location_y) {
         this.location_y = location_y;
     }
 
-    public void setLocation(int x,int y){
+    public void setLocation(double x,double y){
         this.setLocation_x(x);
         this.setLocation_y(y);
         Log.i("Location",this.getMinor()+" location setting");

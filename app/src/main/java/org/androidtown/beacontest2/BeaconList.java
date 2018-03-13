@@ -16,20 +16,26 @@ public class BeaconList {
     HashMap<String,BeaconInfo> beaconInfoHashMap = new HashMap<String,BeaconInfo>();
     private static BeaconList beaconList = new BeaconList();//싱글톤 패턴 적용
     ArrayList<String> beaconId = new ArrayList<String>();
+    private int txPower = -59;
 
     private BeaconList() {
         beaconInfoHashMap.put("MiniBeacon12802",new BeaconInfo("MiniBeacon12802","40001","12802"));
         beaconInfoHashMap.get("MiniBeacon12802").setLocation(0,0);
 
         beaconInfoHashMap.put("MiniBeacon12928",new BeaconInfo("MiniBeacon12928","40001","12928"));
-        beaconInfoHashMap.get("MiniBeacon12928").setLocation(5,0);
+        beaconInfoHashMap.get("MiniBeacon12928").setLocation(0.01,5);
 
         beaconInfoHashMap.put("MiniBeacon13298",new BeaconInfo("MiniBeacon13298","40001","13298"));
-        beaconInfoHashMap.get("MiniBeacon13298").setLocation(4,3);
+        beaconInfoHashMap.get("MiniBeacon13298").setLocation(0.02,0.01);
 
         beaconInfoHashMap.put("MiniBeacon_14863",new BeaconInfo("MiniBeacon_14863","40001","14863"));
+        beaconInfoHashMap.get("MiniBeacon_14863").setLocation(6.8,0.02);
+
         beaconInfoHashMap.put("MiniBeacon_14990",new BeaconInfo("MiniBeacon_14990","40001","14990"));
+        beaconInfoHashMap.get("MiniBeacon_14990").setLocation(0.03,10);
+
         beaconInfoHashMap.put("MiniBeacon_14997",new BeaconInfo("MiniBeacon_14997","40001","14997"));
+        beaconInfoHashMap.get("MiniBeacon_14997").setLocation(7,8);
 
 
         beaconId.add("MiniBeacon12802");
@@ -45,7 +51,7 @@ public class BeaconList {
         return beaconInfoHashMap.get(name);
     }
 
-    public static BeaconList getInstance(){
+    public static BeaconList getBeaconListInstance(){
         return beaconList;
     }
 
@@ -80,5 +86,13 @@ public class BeaconList {
             return beaconInfos;
         }
 
+    }
+
+    public int getTxPower() {
+        return txPower;
+    }
+
+    public void setTxPower(int txPower) {
+        this.txPower = txPower;
     }
 }

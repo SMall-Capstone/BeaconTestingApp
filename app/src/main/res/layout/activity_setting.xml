@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:gravity="center"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:text="0" />
 
         <EditText
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:gravity="center"
             android:text="0" />
     </LinearLayout>
@@ -60,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="0.01" />
 
         <EditText
             android:id="@+id/editText_12928_y"
@@ -70,9 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="5" />
 
     </LinearLayout>
 
@@ -94,9 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="0.02" />
 
         <EditText
             android:id="@+id/editText_13298_y"
@@ -104,9 +104,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="0.01" />
     </LinearLayout>
 
     <LinearLayout
@@ -127,9 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="6.8" />
 
         <EditText
             android:id="@+id/editText_14863_y"
@@ -137,9 +137,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="0.02" />
     </LinearLayout>
 
     <LinearLayout
@@ -160,9 +160,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="0.03" />
 
         <EditText
             android:id="@+id/editText_14990_y"
@@ -170,9 +170,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="10" />
     </LinearLayout>
 
     <LinearLayout
@@ -193,9 +193,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="7" />
 
         <EditText
             android:id="@+id/editText_14997_y"
@@ -203,9 +203,52 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:gravity="center"
-            android:text="0" />
+            android:inputType="numberDecimal"
+            android:text="8.1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size(x,y),txPower" />
+
+        <EditText
+            android:id="@+id/editText_maxWidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:text="7" />
+
+        <EditText
+            android:id="@+id/editText_maxHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:text="10" />
+
+        <EditText
+            android:id="@+id/editText_txPower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="-59" />
     </LinearLayout>
 
     <Button
