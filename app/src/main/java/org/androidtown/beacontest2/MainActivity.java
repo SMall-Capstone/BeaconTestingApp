@@ -393,6 +393,13 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 if(resultY>m.getMaxHeight())
                     resultY = m.getMaxHeight();
             }
+
+            //좌표가 NaN으로 나올 경우 이전값으로 대체하여 사용
+            if(Double.isNaN(resultX) || Double.isNaN(resultY)){
+                resultX = previousX;
+                resultY = previousY;
+            }
+
             if(previousX==-1 && previousY==-1) {
                 //이전에 저장된 값이 없는 경우=>처음 측정된 값
                 previousX=resultX;
@@ -404,8 +411,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 Log.i("yunjae", "x = " + resultX + " y = " + resultY);
             }
             else {
-                //이전의 값과 차이가 5m이상 나지 않는 경우에만 좌표출력
-                if ( ! (previousX-resultX<-3.5 || previousX-resultX>3.5) ){
+                //이전의 값과 차이가 설정 값 이상 나지 않는 경우에만 좌표출력
+                if ( ! (previousX-resultX<-2.5 || previousX-resultX>2.5) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
