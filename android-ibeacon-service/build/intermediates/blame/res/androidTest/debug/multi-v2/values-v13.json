@@ -91,6 +91,21 @@
             ]
         },
         {
+            "outputFile": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v13\\values-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\values-v13\\values-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\HANEUL\\Android\\AndroidStudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-v13\\values-v13.xml",
             "map": [
                 {
@@ -155,6 +170,21 @@
             "map": [
                 {
                     "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\values-v13\\values-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-v13\\values-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\values-v13\\values-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

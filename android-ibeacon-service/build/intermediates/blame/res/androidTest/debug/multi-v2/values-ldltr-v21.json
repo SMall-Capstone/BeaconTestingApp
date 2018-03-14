@@ -16,6 +16,21 @@
             ]
         },
         {
+            "outputFile": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\seongwon\\android_workspace\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
             "map": [
                 {
@@ -95,6 +110,21 @@
             "map": [
                 {
                     "source": "C:\\Users\\hscom-013\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\87e2fd994e5ac778f1af6f50257df2b4\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

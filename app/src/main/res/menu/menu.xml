@@ -8,4 +8,6 @@
         android:title="숨기기" />
     <item android:id="@+id/locationBtn"
         android:title="좌표 숨기기" />
+    <item android:id="@+id/myLocation"
+        android:title="좌표 찍기" />
 </menu>

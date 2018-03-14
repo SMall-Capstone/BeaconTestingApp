@@ -7,7 +7,6 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v4.app.ActivityCompat;
@@ -17,13 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.github.mikephil.charting.charts.Chart;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
@@ -32,15 +28,6 @@ import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 import org.androidtown.android_ibeacon_service.IBeacon;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-
-
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -50,6 +37,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static java.lang.Math.pow;
 
@@ -58,6 +47,8 @@ import static java.lang.Math.pow;
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     public static final String TAG = "MainActivity";
+
+    public Ball ball = Ball.getBallInstance();
 
     private BeaconManager beaconManager;
 
@@ -79,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //비콘 목록 불러오기(Singleton)
         beaconList = BeaconList.getBeaconListInstance();
@@ -193,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     public BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
         @Override
         public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
+            Log.i("yunjae", "callback");
 
             if (device.getName() != null && device.getName().contains("MiniBeacon")) {
                 BeaconInfo beaconInfo = beaconList.findBeacon(device.getName());
@@ -400,7 +393,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 if(resultY>m.getMaxHeight())
                     resultY = m.getMaxHeight();
             }
-
             if(previousX==-1 && previousY==-1) {
                 //이전에 저장된 값이 없는 경우=>처음 측정된 값
                 previousX=resultX;
@@ -408,12 +400,17 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                 TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                 location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+                ball.setLocation(resultX*62.25, resultY*77.14);
+                Log.i("yunjae", "x = " + resultX + " y = " + resultY);
             }
             else {
                 //이전의 값과 차이가 5m이상 나지 않는 경우에만 좌표출력
                 if ( ! (previousX-resultX<-3.5 || previousX-resultX>3.5) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
+                    //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
+                    ball.setLocation(resultX*62.25, resultY*77.14);
+                    Log.i("yunjae", "x = " + resultX + " y = " + resultY);
                 }
             }
 
@@ -466,6 +463,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 locationLayout.setVisibility(View.VISIBLE);
             }
 
+        }
+
+        else if(id == R.id.myLocation) {
+            Intent intent = new Intent(getApplicationContext(),MyLocationActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

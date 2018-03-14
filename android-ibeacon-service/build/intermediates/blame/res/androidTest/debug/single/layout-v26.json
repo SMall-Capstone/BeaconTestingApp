@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v26\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\layout-v26\\abc_screen_toolbar.xml"
+    },
+    {
         "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v26\\abc_screen_toolbar.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout-v26\\abc_screen_toolbar.xml"
     },
