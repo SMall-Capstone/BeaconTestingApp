@@ -9,8 +9,8 @@ public class Map {
     public static Map map = new Map();
 
     private Map(){
-        this.maxWidth = 5;
-        this.maxHeight = 10;
+        this.maxWidth = 14;
+        this.maxHeight = 28;
     }
 
 

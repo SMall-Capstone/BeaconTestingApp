@@ -2,8 +2,11 @@ package org.androidtown.beacontest2;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -17,12 +20,17 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
     Ball ball = Ball.getBallInstance();
     TimerThread timerThread;
     SurfaceHolder surfaceHolder;
+    Bitmap bitmap;
+    Paint mPaint;
 
     public AnimatedView(Context context) {
         super(context);
         this.context= context;
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
+        surfaceHolder.setFixedSize(500, 500);
+        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.mapimage200);
+        mPaint = new Paint();
     }
 
     public AnimatedView(Context context, AttributeSet attrs) {
@@ -157,6 +165,11 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
                     synchronized (surfaceHolder) {
                         Canvas canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.WHITE);
+
+                        canvas.drawBitmap(bitmap, 50, 0, null);
+
+
+
                         Log.i("canvas", "x = " + canvas.getWidth() + " y = " + canvas.getHeight());
                         ball.draw(canvas);
                         surfaceHolder.unlockCanvasAndPost(canvas);
