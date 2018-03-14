@@ -409,7 +409,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
-                    ball.setLocation(resultX*62.25, resultY*77.14);
+                    ball.setLocation(resultX*62.29, resultY*77.14);
                     Log.i("yunjae", "x = " + resultX + " y = " + resultY);
                 }
             }
