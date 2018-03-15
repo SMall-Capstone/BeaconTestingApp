@@ -12,12 +12,12 @@
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
         "merged": "C:\\Users\\HANEUL\\Android\\AndroidStudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view.xml",
@@ -48,16 +48,16 @@
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
         "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_action_mode_bar.xml"
+        "merged": "C:\\CapstoneDesign\\Android\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_expanded_menu_layout.xml",
@@ -104,32 +104,32 @@
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\542f564c8df278d28aefdedabb40bb88\\res\\layout\\notification_media_action.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout\\notification_template_part_chronometer.xml"
+        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\5132488fda3fd4d7210e25f44a30272f\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_layout.xml",
         "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\tooltip.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\tooltip.xml"
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_title_item.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\select_dialog_singlechoice_material.xml"
+        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\tooltip.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\tooltip.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_checkbox.xml",
@@ -144,12 +144,12 @@
         "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\acca52bdf903f089c948c849241bcb3c\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_media_action.xml",
@@ -172,12 +172,12 @@
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\e0bf0fd8597eb9c539cbc7097b7e054d\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_list_menu_item_checkbox.xml"
-    },
-    {
         "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\HANEUL\\StudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_up_container.xml",

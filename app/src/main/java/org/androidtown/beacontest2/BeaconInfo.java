@@ -13,6 +13,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
     private double maxRSSI,minRSSI;
     private double location_x,location_y;
     private double distance;
+    private boolean isEventBeacon;
 
     public BeaconInfo(){
 
@@ -27,6 +28,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         this.maxRSSI = -100;
         this.minRSSI = 0;
         this.distance = -1;
+        this.isEventBeacon = false;
     }
 
     public String getName() {
@@ -122,5 +124,13 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         else if(this.filteredRSSIvalue < b.getFilteredRSSIvalue())
             return -1;
         return 0;
+    }
+
+    public boolean getisEventBeacon() {
+        return isEventBeacon;
+    }
+
+    public void setIsEventBeacon(boolean eventBeacon) {
+        isEventBeacon = eventBeacon;
     }
 }

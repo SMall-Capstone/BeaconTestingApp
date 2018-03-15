@@ -243,6 +243,13 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             //////excel 용 rssi 데이터 저장
                             excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(), beaconInfo.getName(), beaconInfo.getDistance(), resultX, resultY));
                         }
+                        if(beaconInfos.size() >= 3) {
+                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(3));
+                            if(beaconInfos.get(0).getisEventBeacon()){
+                                //Notification띄우고 쿠폰 발급
+                                Toast.makeText(getApplicationContext(),"Coupon Get!!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
                         //Chart 그래프 보는 버튼
                         //chart 로 데이터 전달
@@ -420,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             }
             else {
                 //이전의 값과 차이가 설정 값 이상 나지 않는 경우에만 좌표출력
-                if ( ! (previousX-resultX<-2.5 || previousX-resultX>2.5) ){
+                if ( ! (previousX-resultX<-10 || previousX-resultX>10) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
