@@ -8,11 +8,29 @@ public class RssiItem {
 
     private int rssi;
     private String beaconID;
+    private Double distance;
 
-    public RssiItem(int rssi, String beaconID) {
+    private Double resultX;
+    private Double resultY;
+
+
+    public RssiItem(int rssi, String beaconID, Double distance, Double resultX, Double resultY) {
         this.rssi = rssi;
         this.beaconID = beaconID;
+        this.distance = distance;
+        this.resultX = resultX;
+        this.resultY = resultY;
     }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
+
 
     public String getBeaconID() {
         return beaconID;
@@ -30,6 +48,21 @@ public class RssiItem {
         this.rssi = rssi;
     }
 
+    public Double getResultX() {
+        return resultX;
+    }
+
+    public void setResultX(Double resultX) {
+        this.resultX = resultX;
+    }
+
+    public Double getResultY() {
+        return resultY;
+    }
+
+    public void setResultY(Double resultY) {
+        this.resultY = resultY;
+    }
 
 
 

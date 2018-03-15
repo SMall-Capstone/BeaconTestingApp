@@ -80,11 +80,13 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         //SeongWon 수정
         //┌============================================================================================================
 
-        //SeongWon 위치권한 물어보기
+        //SeongWon 위치권한 물어보기 //haneul 저장권한
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
             }, 1);
         }
         //위치권한 물어보기 End
@@ -221,8 +223,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         //새로 필터링 된 값으로 RSSI값 설정
                         beaconInfo.setFilteredRSSIvalue(filteredRSSI);
 
-                        //////excel 용 rssi 데이터 저장
-                        excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(), beaconInfo.getName()));
+
 
 
                         distanceSetText(beaconInfo, (double)filteredRSSI);//거리 계산해서 textView에 출력
@@ -237,8 +238,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             textView_nearestBeaconList.append("\n"+beaconInfos.get(i).getName());
                         }
 
-                        if(beaconInfos.size() >= 3)
-                            calculateDistance(beaconInfos.get(0),beaconInfos.get(1),beaconInfos.get(3));
+                        if(beaconInfos.size() >= 3) {
+                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(3));
+                            //////excel 용 rssi 데이터 저장
+                            excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(), beaconInfo.getName(), beaconInfo.getDistance(), resultX, resultY));
+                        }
 
                         //Chart 그래프 보는 버튼
                         //chart 로 데이터 전달
@@ -347,6 +351,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             }
         }
 
+        double resultX,resultY;
+
         public void calculateDistance(BeaconInfo b1,BeaconInfo b2, BeaconInfo b3){
             double X1 = b1.getLocation_x();
             double Y1 = b1.getLocation_y();
@@ -369,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             double TriangleMinusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
                     Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
 
-            double resultX,resultY;
+
 
             double d1 = pointTopointDistance(TrianglePlusX,TrianglePlusY,b3.getLocation_x(),b3.getLocation_y());
             double d2 = pointTopointDistance(TriangleMinusX,TriangleMinusY,b3.getLocation_x(),b3.getLocation_y());
@@ -500,12 +506,26 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         cell = row.createCell(1); // 2번 셀 생성
         cell.setCellValue("RSSI"); // 2번 셀 값 입력
 
+        cell = row.createCell(2); // 3번 셀 생성
+        cell.setCellValue("Distance");
+
+        cell = row.createCell(4);
+        cell.setCellValue("좌표");
+
+
         for(int i=1;i<excelRssiArray.size();i++) {
             row = sheet.createRow(i);
             cell = row.createCell(0);
             cell.setCellValue(excelRssiArray.get(i).getBeaconID());
             cell = row.createCell(1);
             cell.setCellValue(excelRssiArray.get(i).getRssi());
+            cell = row.createCell(2);
+            cell.setCellValue(excelRssiArray.get(i).getDistance());
+
+            String coordinate = "(" + String.format("%.2f",excelRssiArray.get(i).getResultX()) + "," + String.format("%.2f",excelRssiArray.get(i).getResultY()) + ")"; // 좌표(x,y)
+            cell = row.createCell(4);
+            cell.setCellValue(coordinate);
+
         }
 
         File xlsFile = new File("sdcard/excelRssi/RssiData.xls");
