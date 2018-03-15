@@ -28,8 +28,8 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
         this.context= context;
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        surfaceHolder.setFixedSize(500, 500);
-        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.mapimage200);
+        surfaceHolder.setFixedSize(500, 700);
+        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.mapimage140);
         mPaint = new Paint();
     }
 

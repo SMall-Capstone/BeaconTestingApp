@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     private ArrayList<RssiItem> excelRssiArray = new ArrayList<>();
 
     private double previousX=-1,previousY=-1;
+
+    private double accumulationX = 35.71, accumulationY = 25; //축적 계산한 x,y값에 곱해야 할 값
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -407,7 +409,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                 TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                 location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
-                ball.setLocation(resultX*62.25, resultY*77.14);
+                ball.setLocation(resultX*accumulationX, resultY*accumulationY);
                 Log.i("yunjae", "x = " + resultX + " y = " + resultY);
             }
             else {
@@ -416,7 +418,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
-                    ball.setLocation(resultX*62.29, resultY*77.14);
+                    ball.setLocation(resultX*accumulationX, resultY*accumulationY);
                     Log.i("yunjae", "x = " + resultX + " y = " + resultY);
                 }
             }
