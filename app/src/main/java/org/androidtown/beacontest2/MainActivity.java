@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     private double previousX=-1,previousY=-1;
 
-    private double accumulationX = 35.71, accumulationY = 25; //축적 계산한 x,y값에 곱해야 할 값
+    private double accumulationX = 65.29, accumulationY = 66; //축적 계산한 x,y값에 곱해야 할 값
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,6 +194,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
             if (device.getName() != null && device.getName().contains("MiniBeacon")) {
                 BeaconInfo beaconInfo = beaconList.findBeacon(device.getName());
+
                 if(beaconInfo==null){
                     Log.i("BeaconName","beaconInfo를 얻지 못함-"+device.getName());
                     //Toast.makeText(getApplicationContext(),"beacon null / "+device.getName(),Toast.LENGTH_LONG).show();
@@ -221,33 +223,97 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             minRSSIvalueSetText(beaconInfo.getMinor(), filteredRSSI);//최솟값이 바뀐경우 setText
                         }
                         //새로 필터링 된 값으로 RSSI값 설정
-                        beaconInfo.setFilteredRSSIvalue(filteredRSSI);
+                        //beaconInfo.setFilteredRSSIvalue(filteredRSSI);
 
+                        //===============================================================================================
+                        //칼만필터+성문필터
+                        if(beaconInfo.getFilteredRssiQueue().size()==10){
+                            beaconInfo.removeInFilteredRssiQueue();
+                            beaconInfo.addFilteredRssiQueue(filteredRSSI);
+                        }
+                        else{
+                            beaconInfo.addFilteredRssiQueue(filteredRSSI);
+                        }
 
+                        int doubleFilteredRSSI = beaconInfo.getAvgRssi(beaconInfo.getFilteredRssiQueue());
+                        //새로 필터링 된 값으로 RSSI값 설정
+                        beaconInfo.setFilteredRSSIvalue(doubleFilteredRSSI);
 
+                        //==================================================================================================
+                        //only 성문필더
+                        if(beaconInfo.getNoFilterRssiQueue().size()==10){
+                            beaconInfo.removeInNoFilterRssiQueue();
+                            beaconInfo.addNoFilterRssiQueue(rssi);
+                        }
+                        else{
+                            beaconInfo.addNoFilterRssiQueue(rssi);
+                        }
 
-                        distanceSetText(beaconInfo, (double)filteredRSSI);//거리 계산해서 textView에 출력
+                        int sungmoonFilteredRSSI = beaconInfo.getAvgRssi(beaconInfo.getNoFilterRssiQueue());
 
+                        //=================================================================================================
+
+                        distanceSetText(beaconInfo, (double)doubleFilteredRSSI);//거리 계산해서 textView에 출력
                         textView_beaconList.append(beaconInfo.getMinor() + "평균 = " + filteredRSSI + "\n"); //아래쪽 텍스트뷰
 
                         TextView textView_nearestBeaconList = (TextView)findViewById(R.id.textView_nearestBeaconList);
                         ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
+
+                        //이상치 비콘 삭제
+                        if(beaconInfos.get(0).getMinor().contains("13298")||beaconInfos.get(0).getMinor().contains("14997")||beaconInfos.get(0).getMinor().contains("12928")){
+                            removeOutlier(beaconInfos,"165");
+                            removeOutlier(beaconInfos,"175");
+                            removeOutlier(beaconInfos,"14863");
+                        }
+                        if(beaconInfos.get(0).getMinor().contains("165")||beaconInfos.get(0).getMinor().contains("175")||beaconInfos.get(0).getMinor().contains("14863")){
+                            removeOutlier(beaconInfos,"13298");
+                            removeOutlier(beaconInfos,"14997");
+                            removeOutlier(beaconInfos,"12928");
+                        }
+                        if(beaconInfos.get(0).getMinor().contains("14990") || beaconInfos.get(0).getMinor().contains("177")||beaconInfos.get(0).getMinor().contains("1352")){
+                            removeOutlier(beaconInfos,"14863");
+                            if(beaconInfos.get(0).getMinor().contains("14990")){
+                                removeOutlier(beaconInfos,"12802");
+                                removeOutlier(beaconInfos,"175");
+                            }
+                        }
+
                         textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
                             Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
-                            textView_nearestBeaconList.append("\n"+beaconInfos.get(i).getName());
+                            textView_nearestBeaconList.append("\n"+beaconInfos.get(i).getName()+ " : "+ beaconInfos.get(i).getDistance());
                         }
 
+                        double d1 = (double) pow(10, (beaconList.getTxPower(doubleFilteredRSSI) - doubleFilteredRSSI) / (10 * 2.0));
+                        double distance_doubleFilteredRSSI = Double.parseDouble(String.format("%.2f",d1));
+
+                        double d2 = (double) pow(10, (beaconList.getTxPower(rssi) - rssi) / (10 * 2.0));
+                        double distance_plainRssi = Double.parseDouble(String.format("%.2f",d2));
+
+                        double d3 = (double) pow(10, (beaconList.getTxPower(sungmoonFilteredRSSI) - sungmoonFilteredRSSI) / (10 * 2.0));
+                        double distance_sungmoonFilteredRSSI = Double.parseDouble(String.format("%.2f",d3));
+
                         if(beaconInfos.size() >= 3) {
-                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(3));
+                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(2));
                             //////excel 용 rssi 데이터 저장
-                            excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(), beaconInfo.getName(), beaconInfo.getDistance(), resultX, resultY));
+                            //distance : 칼만,더블필터distance1,노필터distance2,성문필터distance3
+                            excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(),
+                                    beaconInfo.getName(),
+                                    beaconInfo.getDistance(),/*칼만필터*/
+                                    resultX,
+                                    resultY,
+                                    doubleFilteredRSSI,
+                                    distance_doubleFilteredRSSI,
+                                    rssi,
+                                    distance_plainRssi,
+                                    sungmoonFilteredRSSI,
+                                    distance_sungmoonFilteredRSSI));
                         }
                         if(beaconInfos.size() >= 3) {
-                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(3));
+                            calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(2));
                             if(beaconInfos.get(0).getisEventBeacon()){
                                 //Notification띄우고 쿠폰 발급
-                                Toast.makeText(getApplicationContext(),"Coupon Get!!",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(),"Coupon Get!!",Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -328,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
 
         public void distanceSetText(BeaconInfo beaconInfo, double filteredRSSI) {
-            double d = (double) pow(10, (beaconList.getTxPower() - filteredRSSI) / (10 * 2));
+            double d = (double) pow(10, (beaconList.getTxPower((int)filteredRSSI) - filteredRSSI) / (10 * 2));
             double distance = Double.parseDouble(String.format("%.2f",d));
             beaconInfo.setDistance(distance);
 
@@ -427,7 +493,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             }
             else {
                 //이전의 값과 차이가 설정 값 이상 나지 않는 경우에만 좌표출력
-                if ( ! (previousX-resultX<-10 || previousX-resultX>10) ){
+                if ( ! (previousX-resultX<-3 || previousX-resultX>3) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
@@ -445,6 +511,15 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
 
     };
+
+    private void removeOutlier(ArrayList<BeaconInfo> beaconInfos, String s) {
+        for(int i=1;i<beaconInfos.size();i++){ //i=0은 안해도됨
+            if(beaconInfos.get(i).getMinor().contains(s)) {
+                beaconInfos.remove(i);
+                i--;
+            }
+        }
+    }
 
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
@@ -495,9 +570,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
     public void saveExcel(){
 
         Workbook workbook = new HSSFWorkbook();
@@ -507,18 +579,38 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         Row row = sheet.createRow(0); // 새로운 행 생성
         Cell cell;
 
+        /*beaconInfo.getFilteredRSSIvalue(),
+                beaconInfo.getName(),
+                beaconInfo.getDistance(),
+                resultX,
+                resultY,
+                doubleFilteredRSSI,
+                distance1,
+                rssi,
+                distance2,
+                sungmoonFilteredRSSI,
+                distance3*/
         cell = row.createCell(0); // 1번 셀 생성
         cell.setCellValue("이름"); // 1번 셀 값 입력
 
         cell = row.createCell(1); // 2번 셀 생성
         cell.setCellValue("RSSI"); // 2번 셀 값 입력
-
         cell = row.createCell(2); // 3번 셀 생성
-        cell.setCellValue("Distance");
-
-        cell = row.createCell(4);
+        cell.setCellValue("칼만거리");
+        cell = row.createCell(3);
         cell.setCellValue("좌표");
-
+        cell = row.createCell(4);
+        cell.setCellValue("더블필터");
+        cell = row.createCell(5);
+        cell.setCellValue("더블필터거리");
+        cell = row.createCell(6);
+        cell.setCellValue("NoFilteredRssi");
+        cell = row.createCell(7);
+        cell.setCellValue("NoFilteredDistance");
+        cell = row.createCell(8);
+        cell.setCellValue("moon필터");
+        cell = row.createCell(9);
+        cell.setCellValue("moon필터거리");
 
         for(int i=1;i<excelRssiArray.size();i++) {
             row = sheet.createRow(i);
@@ -530,9 +622,26 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             cell.setCellValue(excelRssiArray.get(i).getDistance());
 
             String coordinate = "(" + String.format("%.2f",excelRssiArray.get(i).getResultX()) + "," + String.format("%.2f",excelRssiArray.get(i).getResultY()) + ")"; // 좌표(x,y)
-            cell = row.createCell(4);
+            cell = row.createCell(3);
             cell.setCellValue(coordinate);
 
+            cell = row.createCell(4);
+            cell.setCellValue(excelRssiArray.get(i).getDoubleFilteredRssi());
+
+            cell = row.createCell(5);
+            cell.setCellValue(excelRssiArray.get(i).getDistance1());
+
+            cell = row.createCell(6);
+            cell.setCellValue(excelRssiArray.get(i).getNoFilterdRssi());
+
+            cell = row.createCell(7);
+            cell.setCellValue(excelRssiArray.get(i).getDistance2());
+
+            cell = row.createCell(8);
+            cell.setCellValue(excelRssiArray.get(i).getSungmoonFilteredRSSI());
+
+            cell = row.createCell(9);
+            cell.setCellValue(excelRssiArray.get(i).getDistance3());
         }
 
         File xlsFile = new File("sdcard/excelRssi/RssiData.xls");

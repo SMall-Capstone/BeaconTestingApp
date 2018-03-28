@@ -2,26 +2,29 @@ package org.androidtown.beacontest2;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by 이예지 on 2018-03-07.
  */
 
 public class BeaconInfo implements Comparable<BeaconInfo>{
-    private String name,major,minor;
+    private String name,minor;
     private int filteredRSSIvalue;
     private boolean isFirst;
     private double maxRSSI,minRSSI;
     private double location_x,location_y;
     private double distance;
     private boolean isEventBeacon;
+    private ArrayList<Integer> filteredRssiQueue = new ArrayList<Integer>();
+    private ArrayList<Integer> noFilterRssiQueue = new ArrayList<Integer>();
 
     public BeaconInfo(){
 
     }
 
-    public BeaconInfo(String name, String major, String minor) {
+    public BeaconInfo(String name, String minor) {
         this.name = name;
-        this.major = major;
         this.minor = minor;
         this.isFirst = true;
         this.filteredRSSIvalue = -1000;
@@ -37,14 +40,6 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
     }
 
     public String getMinor() {
@@ -133,4 +128,37 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
     public void setIsEventBeacon(boolean eventBeacon) {
         isEventBeacon = eventBeacon;
     }
+
+    public void addFilteredRssiQueue(int rssi){
+        this.filteredRssiQueue.add(rssi);
+    }
+
+    public void removeInFilteredRssiQueue(){
+        this.filteredRssiQueue.remove(0);
+    }
+
+    public ArrayList<Integer> getFilteredRssiQueue() {
+        return filteredRssiQueue;
+    }
+
+    public int getAvgRssi(ArrayList<Integer> rssiQueue){
+        int sum = 0;
+        for(int i=0;i<rssiQueue.size();i++){
+            sum+=rssiQueue.get(i);
+        }
+        return (int)(sum/rssiQueue.size());
+    }
+
+    public void addNoFilterRssiQueue(int rssi){
+        this.noFilterRssiQueue.add(rssi);
+    }
+
+    public void removeInNoFilterRssiQueue(){
+        this.noFilterRssiQueue.remove(0);
+    }
+
+    public ArrayList<Integer> getNoFilterRssiQueue() {
+        return noFilterRssiQueue;
+    }
+
 }

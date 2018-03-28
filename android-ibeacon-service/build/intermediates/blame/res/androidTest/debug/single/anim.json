@@ -24,16 +24,16 @@
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\anim\\abc_fade_out.xml"
     },
     {
-        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\tooltip_exit.xml",
-        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\anim\\tooltip_exit.xml"
+        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\anim\\abc_popup_exit.xml"
     },
     {
         "merged": "C:\\Users\\HANEUL\\Android\\AndroidStudioProjects\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
         "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\anim\\abc_slide_in_top.xml"
     },
     {
-        "merged": "C:\\Users\\HANEUL\\Desktop\\_SMall\\BeaconTest2\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\HANEUL\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\22933bc1c0e14e756ee76c9beeb1e903\\res\\anim\\abc_popup_exit.xml"
+        "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\tooltip_exit.xml",
+        "source": "C:\\Users\\이예지\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\144ef1a199f701849cbb11aaaebac45a\\res\\anim\\tooltip_exit.xml"
     },
     {
         "merged": "C:\\AndroidProject_SMall\\BeaconTestingApp\\android-ibeacon-service\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",

@@ -15,6 +15,31 @@
         android:padding="5dp">
 
         <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00165" />
+        <EditText
+            android:id="@+id/editText_00165_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:text="7" />
+
+        <EditText
+            android:id="@+id/editText_00165_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:text="2" />
+
+        <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +72,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00175" />
+        <EditText
+            android:id="@+id/editText_00175_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:text="4" />
+
+        <EditText
+            android:id="@+id/editText_00175_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:text="7" />
 
         <TextView
             android:id="@+id/textView2"
