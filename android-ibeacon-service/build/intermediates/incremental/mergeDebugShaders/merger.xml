@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\AndroidProject_SMall\BeaconTestingApp\android-ibeacon-service\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\AndroidProject_SMall\BeaconTestingApp\android-ibeacon-service\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\HANEUL\StudioProjects\BeaconTestingApp\android-ibeacon-service\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\HANEUL\StudioProjects\BeaconTestingApp\android-ibeacon-service\src\debug\shaders"/></dataSet></merger>

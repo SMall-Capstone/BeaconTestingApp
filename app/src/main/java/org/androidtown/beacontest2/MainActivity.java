@@ -259,6 +259,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         TextView textView_nearestBeaconList = (TextView)findViewById(R.id.textView_nearestBeaconList);
                         ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                         //이상치 비콘 삭제
                         if(beaconInfos.get(0).getMinor().contains("13298")||beaconInfos.get(0).getMinor().contains("14997")||beaconInfos.get(0).getMinor().contains("12928")){
                             removeOutlier(beaconInfos,"165");
@@ -270,13 +272,50 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             removeOutlier(beaconInfos,"14997");
                             removeOutlier(beaconInfos,"12928");
                         }
-                        if(beaconInfos.get(0).getMinor().contains("14990") || beaconInfos.get(0).getMinor().contains("177")||beaconInfos.get(0).getMinor().contains("1352")){
-                            removeOutlier(beaconInfos,"14863");
-                            if(beaconInfos.get(0).getMinor().contains("14990")){
-                                removeOutlier(beaconInfos,"12802");
-                                removeOutlier(beaconInfos,"175");
+                        if(beaconInfos.get(0).getMinor().contains("14990") || beaconInfos.get(0).getMinor().contains("177")||beaconInfos.get(0).getMinor().contains("1352")) {
+                            removeOutlier(beaconInfos, "14863");
+                            if (beaconInfos.get(0).getMinor().contains("14990")) {
+                                removeOutlier(beaconInfos, "12802");
+                                removeOutlier(beaconInfos, "175");
                             }
                         }
+
+                        //haneul 예지확인받기ㅠㅠㅠㅠㅠㅠㅠ
+                        if(beaconInfos.get(0).getMinor().contains("1352") || beaconInfos.get(0).getMinor().contains("12802")||beaconInfos.get(0).getMinor().contains("12928")) {
+                            removeOutlier(beaconInfos, "175");
+                            removeOutlier(beaconInfos, "165");
+                            removeOutlier(beaconInfos, "14863");
+
+                            if (beaconInfos.get(0).getMinor().contains("12928")) {
+                                removeOutlier(beaconInfos, "1031");
+                                removeOutlier(beaconInfos, "783");
+                            }
+                            if(beaconInfos.get(0).getMinor().contains("12802")) {
+                                removeOutlier(beaconInfos, "14990");
+                            }
+                        }
+
+                        if(beaconInfos.get(0).getMinor().contains("165") || beaconInfos.get(0).getMinor().contains("175")||beaconInfos.get(0).getMinor().contains("783")) {
+                            removeOutlier(beaconInfos, "14997");
+                            removeOutlier(beaconInfos, "1352");
+                            removeOutlier(beaconInfos, "12928");
+                            removeOutlier(beaconInfos, "12802");
+
+                            if (beaconInfos.get(0).getMinor().contains("175")) {
+                                removeOutlier(beaconInfos, "14990");
+
+                            }
+                            if (beaconInfos.get(0).getMinor().contains("165")) {
+                                removeOutlier(beaconInfos, "14863");
+                              /*  removeOutlier(beaconInfos, "1352");*/
+
+                            }
+                        }
+
+
+
+
+
 
                         textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
