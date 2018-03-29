@@ -13,9 +13,6 @@ public class RssiItem {
     private int sungmoonFilteredRSSI;
     private int noFilterdRssi;
 
-    private Double resultX;
-    private Double resultY;
-
 /*beaconInfo.getFilteredRSSIvalue(),
         beaconInfo.getName(),
         beaconInfo.getDistance(),
@@ -27,15 +24,13 @@ public class RssiItem {
     distance2,
     sungmoonFilteredRSSI,
     distance3*/
-    public RssiItem(int rssi, String beaconID, Double distance, Double resultX, Double resultY, int doubleFilteredRssi,double distance1,int noFilterdRssi,double distance2,int sungmoonFilteredRSSI,double distance3) {
+    public RssiItem(int rssi, String beaconID, Double distance, int doubleFilteredRssi,double distance1,int noFilterdRssi,double distance2,int sungmoonFilteredRSSI,double distance3) {
         this.rssi = rssi;
         this.beaconID = beaconID;
         this.distance = distance;
         this.distance1 = distance1;
         this.distance2 = distance2;
         this.distance3 = distance3;
-        this.resultX = resultX;
-        this.resultY = resultY;
         this.doubleFilteredRssi = doubleFilteredRssi;
         this.noFilterdRssi = noFilterdRssi;
         this.sungmoonFilteredRSSI = sungmoonFilteredRSSI;
@@ -64,22 +59,6 @@ public class RssiItem {
 
     public void setRssi(int rssi) {
         this.rssi = rssi;
-    }
-
-    public Double getResultX() {
-        return resultX;
-    }
-
-    public void setResultX(Double resultX) {
-        this.resultX = resultX;
-    }
-
-    public Double getResultY() {
-        return resultY;
-    }
-
-    public void setResultY(Double resultY) {
-        this.resultY = resultY;
     }
 
     public int getDoubleFilteredRssi() {

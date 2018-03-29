@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     public static final String TAG = "MainActivity";
 
-    public Ball ball = Ball.getBallInstance();
+
 
     private BeaconManager beaconManager;
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     private double previousX=-1,previousY=-1;
 
-    private double accumulationX = 65.29, accumulationY = 66; //축적 계산한 x,y값에 곱해야 할 값
+    public static double accumulationX = 65.29, accumulationY = 66; //축적 계산한 x,y값에 곱해야 할 값
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,10 +254,12 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         //=================================================================================================
 
                         distanceSetText(beaconInfo, (double)doubleFilteredRSSI);//거리 계산해서 textView에 출력
+
                         textView_beaconList.append(beaconInfo.getMinor() + "평균 = " + filteredRSSI + "\n"); //아래쪽 텍스트뷰
 
                         TextView textView_nearestBeaconList = (TextView)findViewById(R.id.textView_nearestBeaconList);
-                        ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeacons();
+
+                        ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeaconsByRssi();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -313,10 +315,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                         }
 
 
-
-
-
-
                         textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
                             Log.i("beaconSort",beaconInfos.get(i).getName()+"/"+beaconInfos.get(i).getFilteredRSSIvalue());
@@ -339,8 +337,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             excelRssiArray.add(new RssiItem(beaconInfo.getFilteredRSSIvalue(),
                                     beaconInfo.getName(),
                                     beaconInfo.getDistance(),/*칼만필터*/
-                                    resultX,
-                                    resultY,
                                     doubleFilteredRSSI,
                                     distance_doubleFilteredRSSI,
                                     rssi,
@@ -349,6 +345,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                                     distance_sungmoonFilteredRSSI));
                         }
                         if(beaconInfos.size() >= 3) {
+                            beaconInfos = beaconList.findNearestBeaconsByRssi();
+                            //beaconInfos = beaconList.findNearestBeaconsByPoint();
                             calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(2));
                             if(beaconInfos.get(0).getisEventBeacon()){
                                 //Notification띄우고 쿠폰 발급
@@ -463,9 +461,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             }
         }
 
-        double resultX,resultY;
-
         public void calculateDistance(BeaconInfo b1,BeaconInfo b2, BeaconInfo b3){
+            double resultX,resultY;
+
             double X1 = b1.getLocation_x();
             double Y1 = b1.getLocation_y();
             double X2 = b2.getLocation_x();
@@ -527,8 +525,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                 TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                 location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
-                ball.setLocation(resultX*accumulationX, resultY*accumulationY);
-                Log.i("yunjae", "x = " + resultX + " y = " + resultY);
+                /*ball.setLocation(resultX*accumulationX, resultY*accumulationY);
+                Log.i("yunjae", "x = " + resultX + " y = " + resultY);*/
             }
             else {
                 //이전의 값과 차이가 설정 값 이상 나지 않는 경우에만 좌표출력
@@ -536,8 +534,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
                     //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
-                    ball.setLocation(resultX*accumulationX, resultY*accumulationY);
-                    Log.i("yunjae", "x = " + resultX + " y = " + resultY);
+                    /*ball.setLocation(resultX*accumulationX, resultY*accumulationY);
+                    Log.i("yunjae", "x = " + resultX + " y = " + resultY);*/
                 }
             }
 
@@ -547,9 +545,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         public double pointTopointDistance(double x1,double y1,double x2,double y2){
             return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
         }
-
-
     };
+
+
 
     private void removeOutlier(ArrayList<BeaconInfo> beaconInfos, String s) {
         for(int i=1;i<beaconInfos.size();i++){ //i=0은 안해도됨
@@ -660,9 +658,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             cell = row.createCell(2);
             cell.setCellValue(excelRssiArray.get(i).getDistance());
 
-            String coordinate = "(" + String.format("%.2f",excelRssiArray.get(i).getResultX()) + "," + String.format("%.2f",excelRssiArray.get(i).getResultY()) + ")"; // 좌표(x,y)
+            /*String coordinate = "(" + String.format("%.2f",excelRssiArray.get(i).getResultX()) + "," + String.format("%.2f",excelRssiArray.get(i).getResultY()) + ")"; // 좌표(x,y)
             cell = row.createCell(3);
-            cell.setCellValue(coordinate);
+            cell.setCellValue(coordinate);*/
 
             cell = row.createCell(4);
             cell.setCellValue(excelRssiArray.get(i).getDoubleFilteredRssi());

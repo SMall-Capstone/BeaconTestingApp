@@ -16,6 +16,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
     private double location_x,location_y;
     private double distance;
     private boolean isEventBeacon;
+    private int nearestPoint;
     private ArrayList<Integer> filteredRssiQueue = new ArrayList<Integer>();
     private ArrayList<Integer> noFilterRssiQueue = new ArrayList<Integer>();
 
@@ -32,6 +33,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         this.minRSSI = 0;
         this.distance = -1;
         this.isEventBeacon = false;
+        this.nearestPoint=0;
     }
 
     public String getName() {
@@ -161,4 +163,14 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
         return noFilterRssiQueue;
     }
 
+    public void addNearestPoint(int point){
+        nearestPoint += point;
+    }
+    public int getNearestPoint() {
+        return nearestPoint;
+    }
+
+    public void setNearestPoint(int nearestPoint) {
+        this.nearestPoint = nearestPoint;
+    }
 }

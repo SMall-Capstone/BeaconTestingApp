@@ -51,6 +51,7 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
     public void surfaceCreated(SurfaceHolder holder) {
         timerThread= new TimerThread();
         timerThread.start();
+        Log.i("check Thread","스레드시작");
     }
 
     @Override
@@ -159,30 +160,43 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
         public void run(){
             while(isRun){
                 Log.i("jmlee", "thread is running");
+
+
                 //handler.sendEmptyMessage(0);
                 // part1 : paint
                 if(ticker++ % 10 == 0) {
                     synchronized (surfaceHolder) {
                         Canvas canvas = surfaceHolder.lockCanvas();
-                        canvas.drawColor(Color.WHITE);
 
-                        canvas.drawBitmap(bitmap, 50, 0, null);
+                        if(canvas==null){
+                            Log.i("canvas", "canvas null");
+                        }
+                        else{
+                            canvas.drawColor(Color.WHITE);
+
+                            BeaconList beaconList = BeaconList.getBeaconListInstance();
+                            beaconList.calculateDistance();
+
+                            canvas.drawBitmap(bitmap, 50, 0, null);
+                            Log.i("canvas", "x = " + canvas.getWidth() + " y = " + canvas.getHeight());
+                            try{
+                                ball.draw(canvas);
+                                beaconList.initNearestPoint();
+                                sleep(5000);
+                            }catch(InterruptedException e){
+                                break;
+                            }
 
 
+                            surfaceHolder.unlockCanvasAndPost(canvas);
+                        }
 
-                        Log.i("canvas", "x = " + canvas.getWidth() + " y = " + canvas.getHeight());
-                        ball.draw(canvas);
-                        surfaceHolder.unlockCanvasAndPost(canvas);
                     }
                 }
                 // part2 : update
                 //updateAnimation();
 
-                try{
-                    sleep(10);
-                }catch(InterruptedException e){
-                    break;
-                }
+
             }
         }
     }
