@@ -279,6 +279,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             if (beaconInfos.get(0).getMinor().contains("14990")) {
                                 removeOutlier(beaconInfos, "12802");
                                 removeOutlier(beaconInfos, "175");
+                                removeOutlier(beaconInfos, "1486");
                             }
                         }
 
@@ -314,6 +315,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             }
                         }
 
+                        /*이상치를 제거한 비콘 목록으로 포인트 부여*/
+                        beaconList.addPointByRssiSorting(beaconInfos);
+
 
                         textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
@@ -345,8 +349,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                                     distance_sungmoonFilteredRSSI));
                         }
                         if(beaconInfos.size() >= 3) {
-                            beaconInfos = beaconList.findNearestBeaconsByRssi();
-                            //beaconInfos = beaconList.findNearestBeaconsByPoint();
+
+                            beaconInfos = beaconList.findNearestBeaconsByPoint();
                             calculateDistance(beaconInfos.get(0), beaconInfos.get(1), beaconInfos.get(2));
                             if(beaconInfos.get(0).getisEventBeacon()){
                                 //Notification띄우고 쿠폰 발급

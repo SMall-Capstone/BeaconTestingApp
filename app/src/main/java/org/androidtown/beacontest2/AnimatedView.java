@@ -75,28 +75,6 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
         }
     }
 
-    /*public void updateAnimation() {
-        for (int i=0; i<balls.size(); i++) {
-            Ball B = balls.get(i);
-            B.move(getWidth(),getHeight());
-        }
-    }*/
-
-    /*public void updateAnimation() {
-            ball.move(getWidth(),getHeight());
-    }*/
-
-    /*protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        Log.i("yunjae", "onDraw");
-        updateAnimation();
-        for (int i=0; i<balls.size(); i++) {
-            Ball B = balls.get(i);
-            B.draw(canvas);
-        }
-
-    }*/
-
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.i("yunjae", "onDraw");
@@ -105,16 +83,6 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
         invalidate();
     }
 
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
-            //balls.add(new Ball((int)event.getX(), (int)event.getY()));
-            balls.add(new Ball(50, 50));
-            invalidate();
-            return true;
-        }
-        return super.onTouchEvent(event);
-    }*/
 
     Handler handler= new Handler(){
         @Override
@@ -124,43 +92,12 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
         }
     };
 
-    /*class TimerThread extends Thread {
-        public boolean  isRun= true;
-        int ticker = 0;
-        public void run(){
-            while(isRun){
-                Log.i("jmlee", "thread is running");
-                //handler.sendEmptyMessage(0);
-                // part1 : paint
-                if(ticker++ % 10 == 0) {
-                    synchronized (surfaceHolder) {
-                        Canvas canvas = surfaceHolder.lockCanvas();
-                        canvas.drawColor(Color.WHITE);
-                        for (int i = 0; i < balls.size(); i++) {
-                            Ball B = balls.get(i);
-                            B.draw(canvas);
-                        }
-                        surfaceHolder.unlockCanvasAndPost(canvas);
-                    }
-                }
-                // part2 : update
-                updateAnimation();
-
-                try{
-                    sleep(10);
-                }catch(InterruptedException e){
-                    break;
-                }
-            }
-        }
-    }*/
     class TimerThread extends Thread {
         public boolean  isRun= true;
         int ticker = 0;
         public void run(){
             while(isRun){
                 Log.i("jmlee", "thread is running");
-
 
                 //handler.sendEmptyMessage(0);
                 // part1 : paint
@@ -182,7 +119,7 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
                             try{
                                 ball.draw(canvas);
                                 beaconList.initNearestPoint();
-                                sleep(5000);
+                                sleep(3000);
                             }catch(InterruptedException e){
                                 break;
                             }
@@ -195,7 +132,6 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
                 }
                 // part2 : update
                 //updateAnimation();
-
 
             }
         }

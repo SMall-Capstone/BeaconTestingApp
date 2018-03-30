@@ -166,6 +166,7 @@ public class BeaconInfo implements Comparable<BeaconInfo>{
     public void addNearestPoint(int point){
         nearestPoint += point;
     }
+
     public int getNearestPoint() {
         return nearestPoint;
     }
