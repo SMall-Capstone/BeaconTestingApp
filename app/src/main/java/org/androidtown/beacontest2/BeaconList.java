@@ -82,7 +82,7 @@ public class BeaconList {
         return beaconList;
     }
 
-
+    //비콘 rssi, point기준으로 정렬
     public ArrayList<BeaconInfo> findNearestBeaconsByRssi(){
 
         beaconInfos.clear();
