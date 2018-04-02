@@ -8,7 +8,7 @@ import android.util.Log;
 import java.util.Random;
 
 public class Ball {
-    final   int RAD = 20;     // 볼의 반지름
+    final   int RAD = 40;     // 볼의 반지름
     double x, y, dx, dy;               // 볼의 중심 좌표
     int width, height;    // 볼의 넓이와 높이
     int color;

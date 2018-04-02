@@ -23,6 +23,7 @@ public class BeaconList {
     private int txPower;
     public Ball ball = Ball.getBallInstance();
     private double previousX=-1,previousY=-1;
+    private double resultX,resultY;
 
     private BeaconList() {
         beaconInfoHashMap.put("MiniBeacon_00165",new BeaconInfo("MiniBeacon_00165","165"));
@@ -140,11 +141,11 @@ public class BeaconList {
                 //포인트 부여
                 if((beaconInfos.get(k).getName()).equals(removeOutlierBeaconInfos.get(i).getName())){
                     if(i==0) {
-                        beaconInfos.get(k).addNearestPoint(5);
+                        beaconInfos.get(k).addNearestPoint(3);
                         Log.i("addPoint",beaconInfos.get(k).getName()+" -> 5점");
                     }
                     else if(i==1) {
-                        beaconInfos.get(k).addNearestPoint(3);
+                        beaconInfos.get(k).addNearestPoint(2);
                         Log.i("addPoint",beaconInfos.get(k).getName()+" -> 3정");
                     }
                     else if(i==2) {
@@ -193,87 +194,39 @@ public class BeaconList {
     }
 
     public void calculateDistance(){
-        double resultX,resultY;
+
         BeaconInfo b1, b2,  b3;
         ArrayList<BeaconInfo> beaconInfosSortByPoint = findNearestBeaconsByPoint();
 
-        b3 = beaconInfosSortByPoint.get(0);
-
-        b1 = beaconInfosSortByPoint.get(1);
-        b2 = beaconInfosSortByPoint.get(2);
-
-        double X1 = b1.getLocation_x();
-        double Y1 = b1.getLocation_y();
-        double X2 = b2.getLocation_x();
-        double Y2 = b2.getLocation_y();
-        double D1 = b1.getDistance();
-        double D2 = b2.getDistance();
-
-        if(b1.getDistance()>8){
-            D1 *= 0.6;
-        }
-        if(b2.getDistance()>8){
-            D2 *= 0.6;
-        }
+        b1 = beaconInfosSortByPoint.get(0);
+        b2 = beaconInfosSortByPoint.get(1);
+        b3 = beaconInfosSortByPoint.get(2);
 
         Log.i("NearestPoint", "============================================================================");
         Log.i("NearestPoint", "calculateDistance");
-        /*Log.i("NearestPoint", b1.getName() + " => " + b1.getNearestPoint() + " / " + b1.getDistance());
+        Log.i("NearestPoint", b1.getName() + " => " + b1.getNearestPoint() + " / " + b1.getDistance());
         Log.i("NearestPoint", b2.getName() + " => " + b2.getNearestPoint() + " / "+ b2.getDistance());
-        Log.i("NearestPoint", b3.getName() + " => " + b3.getNearestPoint() + " / "+ b3.getDistance());*/
+        Log.i("NearestPoint", b3.getName() + " => " + b3.getNearestPoint() + " / "+ b3.getDistance());
 
-        for (int i=0;i<beaconInfosSortByPoint.size();i++){
+        /*for (int i=0;i<beaconInfosSortByPoint.size();i++){
             Log.i("NearestPoint", beaconInfosSortByPoint.get(i).getName() + " => " + beaconInfosSortByPoint.get(i).getNearestPoint() + " / " + beaconInfosSortByPoint.get(i).getDistance());
-        }
-
-        /*double T = Math.log( Math.pow((X2 - X1),2) + Math.pow((Y2 - Y1),2));
-        double TrianglePlusX = X1 + D1 * Math.cos( Math.atan( (Y2 - Y1) / (X2 - X1) ) +
-                Math.acos( (Math.pow(D1,2) - Math.pow(D2,2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
-        double TriangleMinusX = X1 + D1 * Math.cos( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
-                Math.acos( (Math.pow(D1,2) - Math.pow(D2,2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
-        double TrianglePlusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) +
-                Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
-        double TriangleMinusY = Y1 + D1 * Math.sin( Math.atan( (Y2 - Y1) / (X2 - X1) ) -
-                Math.acos( (Math.pow(D1,2) -  Math.pow(D2, 2) + Math.pow(T,2) ) / (2 * D1 * T) ) );
-
-
-        double d1 = pointTopointDistance(TrianglePlusX,TrianglePlusY,b3.getLocation_x(),b3.getLocation_y());
-        double d2 = pointTopointDistance(TriangleMinusX,TriangleMinusY,b3.getLocation_x(),b3.getLocation_y());
-
-        if(d1 < d2){
-            resultX = TrianglePlusX;
-            resultY = TrianglePlusY;
-        }
-        else {
-            resultX = TriangleMinusX;
-            resultY = TriangleMinusY;
         }*/
 
-        /*
-         * 원1 // 중심 : (a, b) 반지름 : r
-        * 원2 // 중심 : (c, d) 반지름 : s
-        */
-        double a = b1.getLocation_x(), b = b1.getLocation_y(), r = b1.getDistance();
-        double c = b2.getLocation_x(), d = b2.getLocation_y(), s = b2.getDistance();
+        double[] resultXY1,resultXY2,resultXY3;
 
-        double e = c - a;
-        double f = d - b;
-        double p = sqrt(e * e + f * f);
-        double k = (p * p + r * r - s * s) / (2 * p);
-        double x1 = a + (e * k) / p + (f / p) * sqrt(r * r - k * k);
-        double y1 = b + (f * k) / p - (e / p) * sqrt(r * r - k * k);
-        double x2 = a + (e * k) / p - (f / p) * sqrt(r * r - k * k);
-        double y2 = b + (f * k) / p + (e / p) * sqrt(r * r - k * k);
+        resultXY1 = middleOfNodePoint(b1,b2);
+        resultXY2 = middleOfNodePoint(b2,b3);
+        resultXY3 = middleOfNodePoint(b3,b1);
 
-        double d1 = pointTopointDistance(x1,y1,b3.getLocation_x(),b3.getLocation_y());
-        double d2 = pointTopointDistance(x2,y2,b3.getLocation_x(),b3.getLocation_y());
-        if(d1 < d2){
-            resultX = x1;
-            resultY = y1;
+        if((resultXY1[0]==-100) || (resultXY2[0]==-100) || (resultXY3[0]==-100)){
+            //원의 교점을 구하지 못해서 NaN이 나온경우
+            Log.i("NearestPoint","좌표 NaN");
+            resultX = previousX;
+            resultY = previousY;
         }
-        else {
-            resultX = x2;
-            resultY = y2;
+        else{
+            resultX = (resultXY1[0]+resultXY2[0]+resultXY3[0])/3;
+            resultY = (resultXY1[1]+resultXY2[1]+resultXY3[1])/3;
         }
 
         Map m = Map.getMapInstance();
@@ -324,20 +277,105 @@ public class BeaconList {
         return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
     }
 
+    public double[] middleOfNodePoint(BeaconInfo b1,BeaconInfo b2){
+        /*
+         * 원1 // 중심 : (a, b) 반지름 : r
+        * 원2 // 중심 : (c, d) 반지름 : s
+        */
+        double a = b1.getLocation_x(), b = b1.getLocation_y(), r = b1.getDistance();
+        double c = b2.getLocation_x(), d = b2.getLocation_y(), s = b2.getDistance();
+
+
+        if(r>8){
+            r *= 0.8;
+        }
+        if(s>8){
+            s *= 0.8;
+        }
+        if(4.5<r && r<5.5){
+            r *= 1.3;
+        }
+        if(4.5<s && s<5.5){
+            s *= 1.3;
+        }
+        if(4.5>r){
+            r *= 1.6;
+        }
+        if(4.5>s){
+            s *= 1.6;
+        }
+
+        double e = c - a;
+        double f = d - b;
+        double p = sqrt(e * e + f * f);
+        double k = (p * p + r * r - s * s) / (2 * p);
+        double x1 = a + (e * k) / p + (f / p) * sqrt(r * r - k * k);
+        double y1 = b + (f * k) / p - (e / p) * sqrt(r * r - k * k);
+        double x2 = a + (e * k) / p - (f / p) * sqrt(r * r - k * k);
+        double y2 = b + (f * k) / p + (e / p) * sqrt(r * r - k * k);
+
+        double[] resultXY = new double[2];
+        if(Double.isNaN(x1) || Double.isNaN(y1) || Double.isNaN(x2) || Double.isNaN(y2)){
+            Log.i("NearestPoint","좌표 NaN"+b1.getName()+" / "+b2.getName()+" / "+r+","+s);
+            resultXY[0] = -100;
+            resultXY[1] = -100;
+            return resultXY;
+        }
+        else{
+            resultXY[0] = (x1+x2)/2.0;
+            resultXY[1] = (y1+y2)/2.0;
+            return resultXY;
+        }
+
+    }
 
 
     public int getTxPower(int rssi) {
         txPower = -62;
-        /*if(rssi >= -60)
-            txPower = -59;
-        else if(-61 <= rssi && rssi >= -68)
-            txPower = -64;
-        else if(-69 <= rssi && rssi >= -72)
-            txPower = -57;*/
         return txPower;
     }
 
     public void setTxPower(int txPower) {
         this.txPower = txPower;
+    }
+
+    public Ball getBall() {
+        return ball;
+    }
+
+    public void setBall(Ball ball) {
+        this.ball = ball;
+    }
+
+    public double getPreviousX() {
+        return previousX;
+    }
+
+    public void setPreviousX(double previousX) {
+        this.previousX = previousX;
+    }
+
+    public double getPreviousY() {
+        return previousY;
+    }
+
+    public void setPreviousY(double previousY) {
+        this.previousY = previousY;
+    }
+
+    public double getResultX() {
+        return resultX;
+    }
+
+    public void setResultX(double resultX) {
+        this.resultX = resultX;
+    }
+
+    public double getResultY() {
+        return resultY;
+    }
+
+    public void setResultY(double resultY) {
+        this.resultY = resultY;
     }
 }

@@ -47,9 +47,6 @@ import static java.lang.Math.pow;
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     public static final String TAG = "MainActivity";
-
-
-
     private BeaconManager beaconManager;
 
     TextView textView_beaconList;
@@ -66,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     private ArrayList<RssiItem> excelRssiArray = new ArrayList<>();
 
     private double previousX=-1,previousY=-1;
+
 
     public static double accumulationX = 65.29, accumulationY = 66; //축적 계산한 x,y값에 곱해야 할 값
 
@@ -263,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        //이상치 비콘 삭제
+                        /*//이상치 비콘 삭제
                         if(beaconInfos.get(0).getMinor().contains("13298")||beaconInfos.get(0).getMinor().contains("14997")||beaconInfos.get(0).getMinor().contains("12928")){
                             removeOutlier(beaconInfos,"165");
                             removeOutlier(beaconInfos,"175");
@@ -310,10 +308,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                             }
                             if (beaconInfos.get(0).getMinor().contains("165")) {
                                 removeOutlier(beaconInfos, "14863");
-                              /*  removeOutlier(beaconInfos, "1352");*/
+                              *//*  removeOutlier(beaconInfos, "1352");*//*
 
                             }
-                        }
+                        }*/
 
                         /*이상치를 제거한 비콘 목록으로 포인트 부여*/
                         beaconList.addPointByRssiSorting(beaconInfos);
@@ -695,6 +693,5 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             e.printStackTrace();
         }
     }
-
 
 }

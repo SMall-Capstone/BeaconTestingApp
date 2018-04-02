@@ -119,7 +119,7 @@ public class AnimatedView extends SurfaceView implements SurfaceHolder.Callback{
                             try{
                                 ball.draw(canvas);
                                 beaconList.initNearestPoint();
-                                sleep(3000);
+                                sleep(1500);
                             }catch(InterruptedException e){
                                 break;
                             }
