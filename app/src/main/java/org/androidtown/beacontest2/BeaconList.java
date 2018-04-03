@@ -21,7 +21,6 @@ public class BeaconList {
     ArrayList<BeaconInfo> beaconInfos = new ArrayList<BeaconInfo>();
     ArrayList<BeaconInfo> beaconInfosSortByPoint = new ArrayList<BeaconInfo>();
     private int txPower;
-    public Ball ball = Ball.getBallInstance();
     private double previousX=-1,previousY=-1;
     private double resultX,resultY;
 
@@ -253,8 +252,6 @@ public class BeaconList {
             //이전에 저장된 값이 없는 경우=>처음 측정된 값
             previousX=resultX;
             previousY=resultY;
-
-            ball.setLocation(resultX*MainActivity.accumulationX, resultY*MainActivity.accumulationY);
             Log.i("yunjae", "x = " + resultX + " y = " + resultY);
         }
         else {
@@ -262,8 +259,6 @@ public class BeaconList {
             if ( ! (previousX-resultX<-10 || previousX-resultX>10) ){
                 previousX=resultX;
                 previousY=resultY;
-                //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
-                ball.setLocation(resultX*MainActivity.accumulationX, resultY*MainActivity.accumulationY);
                 Log.i("yunjae", "x = " + resultX + " y = " + resultY);
             }
         }
@@ -329,7 +324,6 @@ public class BeaconList {
 
     }
 
-
     public int getTxPower(int rssi) {
         txPower = -62;
         return txPower;
@@ -337,14 +331,6 @@ public class BeaconList {
 
     public void setTxPower(int txPower) {
         this.txPower = txPower;
-    }
-
-    public Ball getBall() {
-        return ball;
-    }
-
-    public void setBall(Ball ball) {
-        this.ball = ball;
     }
 
     public double getPreviousX() {

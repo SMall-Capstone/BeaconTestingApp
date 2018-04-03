@@ -259,8 +259,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                         ArrayList<BeaconInfo> beaconInfos = beaconList.findNearestBeaconsByRssi();
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
                         /*//이상치 비콘 삭제
                         if(beaconInfos.get(0).getMinor().contains("13298")||beaconInfos.get(0).getMinor().contains("14997")||beaconInfos.get(0).getMinor().contains("12928")){
                             removeOutlier(beaconInfos,"165");
@@ -315,7 +313,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                         /*이상치를 제거한 비콘 목록으로 포인트 부여*/
                         beaconList.addPointByRssiSorting(beaconInfos);
-
 
                         textView_nearestBeaconList.setText("NearestBeaconList");//초기화
                         for(int i=0;i<beaconInfos.size();i++){
@@ -527,20 +524,14 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
                 TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                 location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
-                /*ball.setLocation(resultX*accumulationX, resultY*accumulationY);
-                Log.i("yunjae", "x = " + resultX + " y = " + resultY);*/
             }
             else {
                 //이전의 값과 차이가 설정 값 이상 나지 않는 경우에만 좌표출력
                 if ( ! (previousX-resultX<-3 || previousX-resultX>3) ){
                     TextView location_Textview = (TextView)findViewById(R.id.location_Textview);
                     location_Textview.setText("현재 위치 : ("+Double.parseDouble(String.format("%.2f",resultX))+","+Double.parseDouble(String.format("%.2f",resultY))+")\n");
-                    //ball.setLocation((float)resultX*(float)62.29, (float)resultY*(float)77.14);
-                    /*ball.setLocation(resultX*accumulationX, resultY*accumulationY);
-                    Log.i("yunjae", "x = " + resultX + " y = " + resultY);*/
                 }
             }
-
 
         }
 
